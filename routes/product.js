@@ -10,7 +10,7 @@ router.post('/getByID', async (req, res) => {
         if (!product) return res.json({ msg: "PRODUCT NOT FOUND" })
         res.json({ msg: "PRODUCT FOUND", data: product })
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 });
 
