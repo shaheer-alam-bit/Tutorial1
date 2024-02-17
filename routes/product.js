@@ -3,6 +3,15 @@ const Product = require('../models/Product');
 const express = require('express');
 var router = express.Router();
 
+router.get('/', async (req, res) => {
+    try{
+        const products = await Product.find().populate('user','-password');
+        if (!products) return res.json({ msg: "NO PRODUCTS FOUND" })
+        res.json({ msg: "PRODUCTS FOUND", data: products })
+    } catch (error) {
+        console.error(error);
+    }
+})
 
 router.post('/getByID', async (req, res) => {
     try {
@@ -23,6 +32,20 @@ router.post('/getByName', async (req,res)=>{
         res.json({msg: "PRODUCT FOUND", data: product})
     }catch(error){
         console.error(error)
+    }
+})
+
+router.get('/getByUser/:id', async (req,res)=>{
+    try {
+        const user = await Users.findOne({_id: req.params.id});
+        if (!user) return res.json({ msg: "USER NOT FOUND" });
+        
+        const products = await Product.find({user: user._id});
+        if (!products) return res.json({ msg: "NO PRODUCTS FOUND" });
+
+        res.json({ msg: "PRODUCTS FOUND", data: products });
+    } catch (error) {
+        console.error(error);
     }
 })
 
