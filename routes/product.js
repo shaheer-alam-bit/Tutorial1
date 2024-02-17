@@ -39,7 +39,7 @@ router.get('/getByUser/:id', async (req,res)=>{
     try {
         const user = await Users.findOne({_id: req.params.id});
         if (!user) return res.json({ msg: "USER NOT FOUND" });
-        
+
         const products = await Product.find({user: user._id});
         if (!products) return res.json({ msg: "NO PRODUCTS FOUND" });
 
@@ -94,11 +94,11 @@ router.post('/delete', async (req, res) => {
 
 router.post('/update',async (req,res)=>{
     try{
-        const {barcode_id,quantity,name,price} = req.body;
+        const {barcode_id,quantity,price} = req.body;
         const product = await Product.findOne({barcode_id});
         if (!product) return res.json({ msg: `PRODUCT WITH ${barcode_id} NOT FOUND` });
 
-        await Product.findOneAndUpdate({barcode_id: barcode_id},{ $set: { quantity: quantity , name:name, price:price }});
+        await Product.findOneAndUpdate({barcode_id: barcode_id},{ $set: {quantity: quantity, price:price}});
         return res.json({ msg: `PRODUCT WITH ${barcode_id} UPDATED SUCCESSFULLY` });
     }catch(error){
         console.error(error);
