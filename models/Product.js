@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-    barcode_id: {type: String, required: true},
+    barcode_id: {type: String, required: true,minlength: 13, maxlength: 13},
     name: {type: String, required: true},
     cateogry: String,
     MFG_date: Date,

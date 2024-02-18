@@ -3,25 +3,16 @@ const Product = require('../models/Product');
 const express = require('express');
 var router = express.Router();
 
+
 router.get('/', async (req, res) => {
     try{
-        const products = await Product.find().populate('user','-password');
+        const products = await Product.find()
         if (!products) return res.json({ msg: "NO PRODUCTS FOUND" })
         res.json({ msg: "PRODUCTS FOUND", data: products })
     } catch (error) {
         console.error(error);
     }
 })
-
-router.post('/getByID', async (req, res) => {
-    try {
-        const product = await Product.findOne({ barcode_id: req.body.barcode_id }).populate('user','-password');
-        if (!product) return res.json({ msg: "PRODUCT NOT FOUND" })
-        res.json({ msg: "PRODUCT FOUND", data: product })
-    } catch (error) {
-        console.error(error);
-    }
-});
 
 router.post('/getByName', async (req,res)=>{
     try{
@@ -48,6 +39,28 @@ router.get('/getByUser/:id', async (req,res)=>{
         console.error(error);
     }
 })
+
+//Middleware to check the length of the barcode_id
+router.use((req, res, next) => {
+    if (req.body.barcode_id.length !== 13) {
+        return res.json({ msg: 'INVALID LENGTH OF BARCODE ID' });
+    }
+    else {
+        next();
+    }
+})
+
+
+router.post('/getByID', async (req, res) => {
+    try {
+        const product = await Product.findOne({ barcode_id: req.body.barcode_id }).populate('user','-password');
+        if (!product) return res.json({ msg: "PRODUCT NOT FOUND" })
+        res.json({ msg: "PRODUCT FOUND", data: product })
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 
 router.use((req, res, next) => {
     if (!req.user.admin) {
@@ -82,10 +95,10 @@ router.post('/delete', async (req, res) => {
     try {
         const { barcode_id } = req.body;
         const product = await Product.findOne({ barcode_id });
-        if (!product) return res.json({ msg: `PRODUCT WITH ${barcode_id} NOT FOUND` });
+        if (!product) return res.json({ msg: `PRODUCT WITH ID ${barcode_id} NOT FOUND` });
 
         await Product.deleteOne({ barcode_id });
-        return res.json({ msg: `PRODUCT WITH ${barcode_id} DELETED SUCCESSFULLY` });
+        return res.json({ msg: `PRODUCT WITH ID ${barcode_id} DELETED SUCCESSFULLY` });
     } catch (error) {
         console.error(error);
     }
@@ -96,10 +109,10 @@ router.post('/update',async (req,res)=>{
     try{
         const {barcode_id,quantity,price} = req.body;
         const product = await Product.findOne({barcode_id});
-        if (!product) return res.json({ msg: `PRODUCT WITH ${barcode_id} NOT FOUND` });
+        if (!product) return res.json({ msg: `PRODUCT WITH ID ${barcode_id} NOT FOUND` });
 
         await Product.findOneAndUpdate({barcode_id: barcode_id},{ $set: {quantity: quantity, price:price}});
-        return res.json({ msg: `PRODUCT WITH ${barcode_id} UPDATED SUCCESSFULLY` });
+        return res.json({ msg: `PRODUCT WITH ID ${barcode_id} UPDATED SUCCESSFULLY` });
     }catch(error){
         console.error(error);
     }

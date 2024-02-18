@@ -18,7 +18,7 @@ router.post('/signUp', async (req, res) => {
         
         await Users.create({...req.body, password: await bcrypt.hash(password, 5)});
 
-        return res.json({msg: 'CREATED'});
+        return res.json({msg: 'USER CREATED'});
     } catch (error) {
         if (error.name === 'ValidationError') {
             return res.status(400).json({msg: 'Validation Error:', error: error.message});
