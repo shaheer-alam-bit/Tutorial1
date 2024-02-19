@@ -1,0 +1,655 @@
+{
+	"info": {
+		"_postman_id": "a927c171-a997-4450-b150-da029a7ced43",
+		"name": "Assignment-1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32921593"
+	},
+	"item": [
+		{
+			"name": "Signup/Login",
+			"item": [
+				{
+					"name": "User Created (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Babar\",\r\n    \"lastName\": \"Azam\",\r\n    \"email\":\"bazam123@gmail.com\",\r\n    \"password\": \"Hello@123\",\r\n    \"admin\" :true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Created (Not Admin)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"John\",\r\n    \"lastName\": \"Smith\",\r\n    \"email\":\"acb123@gmail.com\",\r\n    \"password\": \"Hello@098\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validation Checks on Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Shaheer\",\r\n    \"lastName\": \"Alam\",\r\n    \"email\":\"salam@com\",\r\n    \"password\": \"Hello@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validation Checks on Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Shaheer\",\r\n    \"lastName\": \"Alam\",\r\n    \"email\":\"salam@gmail.com\",\r\n    \"password\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logged in (As Admin)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"bazam123@gmail.com\",\r\n    \"password\": \"Hello@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add Products",
+			"item": [
+				{
+					"name": "Adding Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\":\"2248395031234\",\r\n    \"name\": \"Apple\",\r\n    \"category\": \"Fruits\",\r\n    \"price\": 100,\r\n    \"quantity\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\":\"3898776354311\",\r\n    \"name\": \"Banana\",\r\n    \"category\": \"Fruits\",\r\n    \"price\": 200,\r\n    \"quantity\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Barcode ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMTlUMTc6MDg6NTUuMTE5WiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgzNjI1MzUsImV4cCI6MTcwODQ0ODkzNX0.o6WX8RRzIqUxsttpE5rp7eTA8gAn-s5gE5xnBMrxJrQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\":\"111111\",\r\n    \"name\": \"Mango\",\r\n    \"category\": \"Fruits\",\r\n    \"price\": 200,\r\n    \"quantity\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Products",
+			"item": [
+				{
+					"name": "View All products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read product by ID with user who created product (populate)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\": \"3898776354311\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/getByID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"getByID"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Product By Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Apple\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/GetByName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"GetByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All the products made by user (Babar Azam)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/getByUser/65d1c0a3360543ec39449f0c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"getByUser",
+								"65d1c0a3360543ec39449f0c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Products",
+			"item": [
+				{
+					"name": "Deleting A Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\":\"3898776354311\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update Products",
+			"item": [
+				{
+					"name": "Updating A product price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\":\"2248395031234\",\r\n    \"price\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating A product quantity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode_id\" : \"2248395031234\",\r\n    \"quantity\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/product/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhemFtMTIzQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjQtMDItMThUMDg6MzY6MzEuMDIzWiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MDgyNDUzOTEsImV4cCI6MTcwODMzMTc5MX0.CdWzTFL_dGGXDGmDo-D95iEcdNckUZLlPG--fqBahm0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
